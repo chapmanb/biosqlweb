@@ -1,0 +1,15 @@
+This is a Google App Engine implementation of the BioSQL database model 
+(http://www.biosql.org/wiki/Main_Page) for storing biological sequences
+and features and annotations on them.
+
+This is a demonstration of advancing the BioSQL data model to readily
+deployed resources.
+
+The code includes the Biopython library and the mako template language for
+generating HTML. For client javascript, jQuery and jQueryUI are also included.
+
+The demonstration server is running at:
+
+http://biosqlweb.appspot.com/
+
+Please see my blog (http://bcbio.wordpress.com) for more details.
