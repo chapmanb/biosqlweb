@@ -2,13 +2,14 @@
  */
 
 $(document).ready(function() {
-  // Provide collapsible views of BioSQL records
-  $("#bioentry_records").accordion({collapsible: true});
-  //$('#bioentry_records h3').click(function() {
-  //    $(this).next().toggle('slow');
-  //    return false;
-  //  }).next().hide();
-
+  // Provide collapsible views of BioSQL records.
+  $("#bioentry_records").accordion(
+    {collapsible: true, active: false, clearStyle: true});
+  // Use Ajax to load details when opened.
+  $("h3", "#bioentry_records").click(function(e) {
+    var contentDiv = $(this).next("div");
+    contentDiv.load($(this).find("a").attr("href"));      
+  });    
 
   // Provide file upload via Ajax. This still needs some work with the hover
   // effects

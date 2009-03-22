@@ -4,7 +4,7 @@ import StringIO
 import collections
 
 from google.appengine.api import users
-from google.appengine.ext import webapp
+from google.appengine.ext import webapp, db
 from google.appengine.ext.webapp.util import run_wsgi_app
 from django.utils import simplejson as json
 
@@ -28,32 +28,11 @@ class MainPage(webapp.RequestHandler):
         records = []
         for bioentry in bioentries:
             b_tmpl = Template(bioentry_template)
-            qual_info = collections.defaultdict(list)
-            for qual in bioentry.quals:
-                qual_info[qual.term.name].append(qual.value)
-            qualifiers = [(key, ", ".join(values)) for key, values in
-                    qual_info.items()]
-            qualifiers.sort()
-            seq_parts = [bioentry.seqs[0].seq[pos:pos+80] for pos
-                    in range(0, len(bioentry.seqs[0].seq), 80)]
+            retrieve_url = "rpc?action=bioentry_details&bioentry_key=%s" % (
+                    bioentry.key())
             records.append(b_tmpl.render(accession=bioentry.accession,
-                description=bioentry.description, qualifiers=qualifiers,
-                sequence="<br/>".join(seq_parts)))
+                description=bioentry.description, retrieve_url=retrieve_url))
         return records
-
-bioentry_template = """
-<h3><a href="#">${accession} ${description}</a></h3>
-<div>
-<table id="hor-minimalist-a">
-% for key, val in qualifiers:
-    <tr><td><b>${key}</b></td><td>${val}</td></tr>
-% endfor
-</table>
-<pre>
-${sequence}
-</pre>
-</div>
-"""
 
 class RPCHandler(webapp.RequestHandler):
     """Handler for Ajax RPC calls, from:
@@ -67,17 +46,9 @@ class RPCHandler(webapp.RequestHandler):
     def get(self):
         action = self.request.get('action')
         func = self._get_function(action)
-        if not func:
-            return
-        args = []
-        while True:
-          key = 'arg%d' % len(args)
-          val = self.request.get(key)
-          if val:
-              args.append(json.loads(val))
-          else:
-              break
-        self._finish(func, tuple(args))
+        if func:
+            params = self._get_params(self.request)
+            self._finish(func, params)
     
     def post(self):
         action = self.request.get('action')
@@ -139,7 +110,42 @@ class BiodatabaseHandler:
             return []
         biodb = biodb.get_biodatabase()
         return biodb.bioentries[start:start+limit]
+    
+    def bioentry_details(self, bioentry_key):
+        """Retrieve full details for a bioentry based on the internal key.
+
+        This could also use accession numbers or unique identifiers here.
+        """
+        bioentry = db.get(db.Key(bioentry_key))
+        qual_info = collections.defaultdict(list)
+        for qual in bioentry.quals:
+            qual_info[qual.term.name].append(qual.value)
+        qualifiers = [(key, ", ".join(values)) for key, values in
+                qual_info.items()]
+        qualifiers.sort()
+        seq_parts = [bioentry.seqs[0].seq[pos:pos+80] for pos
+                in range(0, len(bioentry.seqs[0].seq), 80)]
+        tmpl = Template(bioentry_details_template)
+        return tmpl.render(qualifiers=qualifiers,
+                sequence="<br/>".join(seq_parts))
         
+bioentry_template = """
+<h3><a href="${retrieve_url}">${accession} ${description}</a></h3>
+<div>
+</div>
+"""
+
+bioentry_details_template = """
+<table id="hor-minimalist-a">
+% for key, val in qualifiers:
+    <tr><td><b>${key}</b></td><td>${val}</td></tr>
+% endfor
+</table>
+<pre>
+${sequence}
+</pre>
+"""
+
 
 application = webapp.WSGIApplication(
                                      [('/', MainPage),
