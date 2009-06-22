@@ -1,0 +1,19 @@
+Metadata-Version: 1.0
+Name: decorator
+Version: 3.0.1
+Summary: Better living through Python with decorators
+Home-page: http://pypi.python.org/pypi/decorator
+Author: Michele Simionato
+Author-email: michele.simionato@gmail.com
+License: BSD License
+Description: </pre><pre>
+Keywords: decorators generic utility
+Platform: All
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Utilities

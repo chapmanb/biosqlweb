@@ -1,0 +1,15 @@
+Metadata-Version: 1.0
+Name: appengine-monkey
+Version: 0.1dev-r59
+Summary: Monkeypatches for Google App Engine
+Home-page: http://code.google.com/p/appengine-monkey/
+Author: Ian Bicking
+Author-email: google-appengine@googlegroups.com
+License: MIT
+Description: This project is a set of replacement modules and monkeypatches to
+        existing modules in the App Engine environment, to make it more like a
+        normal Python environment. This is to facilitate the use of existing
+        libraries.
+        
+Keywords: appengine
+Platform: UNKNOWN

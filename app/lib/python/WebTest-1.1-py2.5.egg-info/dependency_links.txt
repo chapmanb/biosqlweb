@@ -1,0 +1,1 @@
+http://svn.pythonpaste.org/Paste/WebOb/trunk#egg=WebOb-dev

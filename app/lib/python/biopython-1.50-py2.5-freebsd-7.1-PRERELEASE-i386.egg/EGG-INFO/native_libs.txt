@@ -1,0 +1,8 @@
+Bio/clistfns.so
+Bio/cmathfns.so
+Bio/cstringfns.so
+Bio/cpairwise2.so
+Bio/trie.so
+Bio/cMarkovModel.so
+Bio/Nexus/cnexus.so
+Bio/Restriction/DNAUtils.so

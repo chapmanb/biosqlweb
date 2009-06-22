@@ -1,0 +1,15 @@
+CHANGES.txt
+MANIFEST.in
+README.txt
+decorator.py
+documentation.html
+documentation.pdf
+documentation.py
+performance.sh
+setup.cfg
+setup.py
+decorator.egg-info/PKG-INFO
+decorator.egg-info/SOURCES.txt
+decorator.egg-info/dependency_links.txt
+decorator.egg-info/not-zip-safe
+decorator.egg-info/top_level.txt

@@ -1,0 +1,24 @@
+Metadata-Version: 1.0
+Name: WebTest
+Version: 1.1
+Summary: Helper to test WSGI applications
+Home-page: http://pythonpaste.org/webtest/
+Author: Ian Bicking
+Author-email: ianb@colorstudy.com
+License: MIT
+Description: This wraps any WSGI application and makes it easy to send test
+        requests to that application, without starting up an HTTP server.
+        
+        This provides convenient full-stack testing of applications written
+        with any WSGI-compatible framework.
+        
+        This is based on ``paste.fixture.TestApp``.
+        
+Keywords: wsgi test unit tests web
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Framework :: Paste
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Topic :: Internet :: WWW/HTTP :: WSGI
+Classifier: Topic :: Internet :: WWW/HTTP :: WSGI :: Server

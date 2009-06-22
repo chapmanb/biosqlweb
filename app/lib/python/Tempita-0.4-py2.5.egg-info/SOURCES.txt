@@ -1,0 +1,16 @@
+regen-docs
+setup.cfg
+setup.py
+Tempita.egg-info/PKG-INFO
+Tempita.egg-info/SOURCES.txt
+Tempita.egg-info/dependency_links.txt
+Tempita.egg-info/top_level.txt
+Tempita.egg-info/zip-safe
+docs/conf.py
+docs/index.txt
+docs/license.txt
+docs/modules/tempita.txt
+tempita/__init__.py
+tempita/_looper.py
+tests/__init__.py
+tests/test_template.txt

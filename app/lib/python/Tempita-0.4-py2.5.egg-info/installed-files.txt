@@ -1,0 +1,10 @@
+../tempita/__init__.py
+../tempita/_looper.py
+../tempita/__init__.pyc
+../tempita/_looper.pyc
+./
+SOURCES.txt
+PKG-INFO
+top_level.txt
+zip-safe
+dependency_links.txt

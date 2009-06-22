@@ -1,0 +1,23 @@
+application: __APP_NAME__
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: .*
+  script: __APP_SCRIPT__
+
+#skip_files: |
+# ^bin/.*$|
+# ^lib/python2.5/[^/]+$|
+# ^(.*/)?(
+# (app\.yaml)|
+# (app\.yml)|
+# (index\.yaml)|
+# (index\.yml)|
+# (#.*#)|
+# (.*~)|
+# (.*\.py[co])|
+# (.*/RCS/.*)|
+# (\..*)|
+# )$
