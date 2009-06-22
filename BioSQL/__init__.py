@@ -1,2 +1,0 @@
-"""BioSQL related code.
-"""
